@@ -1,3 +1,3 @@
 # Buys-Engine
 
-c++ SDL2 game/engine prototype
+c++ SDL2 game/engine prototype **WIP**
