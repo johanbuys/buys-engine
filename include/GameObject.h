@@ -7,19 +7,19 @@
 class GameObject {
   public:
     Vector2D position;
-    Vector2D velocity;
-    int speed = 3;
+    // Vector2D velocity;
+    
     GameObject(std::string texturesheet, int spriteX, int spriteY, int spriteW, int spriteH, int x, int y, int scale);
     ~GameObject();
 
-    void Update(int count);
+    // void Update(int count);
     void Render();
 
   protected: 
 
     int dt;
-    int srcX;
-    int srcY;
+    // int srcX;
+    // int srcY;
     int scale;
     // bool animate;
 

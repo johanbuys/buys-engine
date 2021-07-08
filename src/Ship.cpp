@@ -1,42 +1,46 @@
 #include "Ship.h"
 
+Ship::Ship(int x, int y, int scale) : GameObject("res/ship.png", 32, 24, 16, 24, x, y, scale) {
+  velocity.Zero();
+}
+
 void Ship::Update(int count)
 {
-  position.x += static_cast<int>(velocity.x * speed);
-  position.y += static_cast<int>(velocity.y * speed);
+  position.x += velocity.x;
+  position.y += velocity.y;
 
-  srcRect.x = srcX;
-  srcRect.y = srcY;
+  // srcRect.x = srcX;
+  // srcRect.y = srcY;
 
-  if (position.y <= 100) {
-    position.y = 100;
+  if (position.x < 0 || position.x + (objTexture.getWidth() / scale) >  Game::SCREEN_WIDTH ) {
+    position.x -= velocity.x;
   }
 
-  if (position.y >= 700)
+  if (position.y < (objTexture.getWidth() / scale) || position.y + (objTexture.getHeight() / scale) > Game::SCREEN_HEIGHT )
   {
-    position.y = 700;
+    position.y -= velocity.y;
   }
 
     if (count % 10 == 0)
     {
-      if (srcY == 24)
+      if (srcRect.y == 24)
       {
-        srcY = 0;
+        srcRect.y = 0;
         // srcY = 0;
-      } else if (srcY == 0)
-    {
-      srcY = 24;
-      // srcY = 0;
-    }
+      }
+      else if (srcRect.y == 0)
+      {
+        srcRect.y = 24;
+        // srcY = 0;
+      }
   }
 
-//
-  if (velocity.x == 1) {
-    srcX = 48;
+  if (velocity.x > 0) {
+    srcRect.x = 48;
   } else if (velocity.x == 0) {
-    srcX = 32;
-  } else if (velocity.x == -1) {
-    srcX = 16;
+    srcRect.x = 32;
+  } else if (velocity.x < -1) {
+    srcRect.x = 16;
   }
 
 }

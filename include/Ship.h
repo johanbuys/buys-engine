@@ -5,8 +5,9 @@
 class Ship : public GameObject
 {
 public:
+  Vector2D velocity;
   int speed {6};
-  Ship(int x, int y, int scale) : GameObject("res/ship.png", 32, 24, 16, 24, x, y, scale) {};
+  Ship(int x, int y, int scale);
   ~Ship();
 
   void Update(int count);

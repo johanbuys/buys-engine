@@ -10,26 +10,15 @@ GameObject::GameObject(std::string texturesheet, int spriteX, int spriteY, int s
   objTexture.loadFromFile(texturesheet);
   position.x = x;
   position.y = y;
-  velocity.Zero();
 
-  srcX = spriteX;
-  srcY = spriteY;
+  // srcX = spriteX;
+  // srcY = spriteY;
   scale = p_scale;
 
   srcRect.x = spriteX;
   srcRect.y = spriteY;
   srcRect.h = spriteH;
   srcRect.w = spriteW;
-  // animate = p_animate;
-}
-
-void GameObject::Update(int count) {
-  position.x += static_cast<int>(velocity.x * speed);
-  position.y += static_cast<int>(velocity.y * speed);
-
-
-  srcRect.x = srcX;
-  srcRect.y = srcY;
 }
 
 void GameObject::Render() {
